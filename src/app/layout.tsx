@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_TC } from "next/font/google";
+import { Inter, Noto_Sans_TC, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,6 +11,12 @@ const notoSansTC = Noto_Sans_TC({
   subsets: ["latin"],
   variable: "--font-noto-sans",
   weight: ["400", "500", "700", "900"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <body
-        className={`${inter.variable} ${notoSansTC.variable} font-sans antialiased`}
+        className={`${inter.variable} ${notoSansTC.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         {children}
       </body>

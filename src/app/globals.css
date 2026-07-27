@@ -8,9 +8,23 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-jetbrains-mono);
 
-  /* 品牌色系 - AI 圓夢魔法學院 */
+  /* ===== 品牌色系 - AI 圓夢魔法學院 ===== */
+
+  /* 品牌主色 Primary */
+  --color-primary: #4F7CFF;
+  --color-primary-hover: #3B6CFF;
+  --color-primary-light: #E8EEFF;
+
+  /* 品牌輔色 Secondary */
+  --color-secondary: #7C3AED;
+
+  /* 品牌點綴色 Accent */
+  --color-accent: #F4C542;
+  --color-accent-hover: #E0B430;
+
+  /* 藍色階 (向後相容) */
   --color-magic-blue: #4F7CFF;
   --color-magic-blue-50: #eff3ff;
   --color-magic-blue-100: #dbe2ff;
@@ -23,16 +37,15 @@
   --color-magic-blue-800: #1d34b6;
   --color-magic-blue-900: #1e308f;
 
-  --color-magic-purple: #7B61FF;
+  --color-magic-purple: #7C3AED;
   --color-magic-gold: #F4C542;
 
-  --color-primary: var(--color-magic-blue);
+  /* 前景 */
   --color-primary-foreground: #ffffff;
-  --color-secondary: var(--color-magic-purple);
   --color-secondary-foreground: #ffffff;
-  --color-accent: var(--color-magic-gold);
   --color-accent-foreground: #1e1e2e;
 
+  /* 版面色 (向後相容) */
   --color-surface: #F8F9FC;
   --color-surface-dark: #1A1A2E;
 
@@ -51,6 +64,11 @@
   --animate-twinkle: twinkle 2s ease-in-out infinite;
   --animate-fade-in: fadeIn 0.6s ease-out;
   --animate-slide-up: slideUp 0.6s ease-out;
+
+  /* Hero 動畫 */
+  --animate-arc-draw: arcDraw 0.8s ease-in-out forwards;
+  --animate-star-reveal: starReveal 0.4s ease-out forwards;
+  --animate-hero-fade-in: heroFadeIn 0.5s ease-out forwards;
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -72,6 +90,18 @@
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
   }
+  @keyframes arcDraw {
+    0% { stroke-dashoffset: 1000; }
+    100% { stroke-dashoffset: 0; }
+  }
+  @keyframes starReveal {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes heroFadeIn {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 }
 
 :root {
@@ -83,7 +113,7 @@
   --popover-foreground: #1e1e2e;
   --primary: #4F7CFF;
   --primary-foreground: #ffffff;
-  --secondary: #7B61FF;
+  --secondary: #7C3AED;
   --secondary-foreground: #ffffff;
   --muted: #f1f1f6;
   --muted-foreground: #6b6b80;
@@ -103,6 +133,71 @@
   --sidebar-accent-foreground: #1e1e2e;
   --sidebar-border: #e4e4ed;
   --sidebar-ring: #4F7CFF;
+
+  /* ===== Design System 色彩 Token ===== */
+
+  /* 品牌色 */
+  --color-primary-hover: #3B6CFF;
+  --color-primary-light: #E8EEFF;
+  --color-accent-hover: #E0B430;
+
+  /* 中性色 */
+  --color-bg: #FFFFFF;
+  --color-bg-secondary: #F8F9FC;
+  --color-bg-tertiary: #F0F1F5;
+  --color-border: #E4E4ED;
+  --color-border-light: #F0F0F5;
+  --color-text-primary: #1E1E2E;
+  --color-text-secondary: #6B6B80;
+  --color-text-tertiary: #9CA3AF;
+  --color-text-inverse: #FFFFFF;
+
+  /* 深色模式 Token (淺色模式底下的值，dark 時覆蓋) */
+  --color-bg-dark: #0F0F1A;
+  --color-bg-dark-secondary: #1A1A2E;
+  --color-bg-dark-tertiary: #252540;
+  --color-text-dark-primary: #F1F1F6;
+  --color-text-dark-secondary: #A1A1B5;
+  --color-border-dark: #2D2D45;
+
+  /* 功能色 */
+  --color-success: #10B981;
+  --color-success-bg: #ECFDF5;
+  --color-warning: #F59E0B;
+  --color-warning-bg: #FFFBEB;
+  --color-error: #EF4444;
+  --color-error-bg: #FEF2F2;
+  --color-info: #4F7CFF;
+  --color-info-bg: #EFF3FF;
+
+  /* 玻璃擬態 */
+  --glass-bg: rgba(255,255,255,0.7);
+  --glass-border: rgba(79,124,255,0.15);
+  --glass-dark-bg: rgba(26,26,46,0.7);
+  --glass-dark-border: rgba(79,124,255,0.2);
+
+  /* 字體分級 Token */
+  --text-display: 48px;
+  --text-h1: 36px;
+  --text-h2: 28px;
+  --text-h3: 22px;
+  --text-body-lg: 20px;
+  --text-body: 18px;
+  --text-body-sm: 16px;
+  --text-caption: 14px;
+  --text-button: 16px;
+  --text-mono: 16px;
+}
+
+/* 深色模式覆蓋 */
+.dark {
+  --color-bg: #0F0F1A;
+  --color-bg-secondary: #1A1A2E;
+  --color-bg-tertiary: #252540;
+  --color-text-primary: #F1F1F6;
+  --color-text-secondary: #A1A1B5;
+  --color-border: #2D2D45;
+  --color-border-light: #2D2D45;
 }
 
 /* 玻璃擬態 */

@@ -129,50 +129,136 @@ export default function HomePage() {
     <div className="flex min-h-screen flex-col">
       <Navbar />
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#0F0F1A] via-[#1A1A3E] to-[#0F0F1A] py-20 lg:py-32">
-          {/* Stars background */}
-          <div className="absolute inset-0 overflow-hidden">
+        {/* Hero Section - 軌跡引導版 (Hero B) */}
+        <section className="relative overflow-hidden bg-gradient-to-b from-[#0F0F1A] to-[#1A1A3E] min-h-[600px] flex items-center">
+          {/* 背景星星 */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {[...Array(20)].map((_, i) => (
               <div
                 key={i}
                 className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  opacity: 0.3 + Math.random() * 0.5,
+                  left: `${((i * 7 + 3) % 100)}%`,
+                  top: `${((i * 13 + 7) % 100)}%`,
+                  animationDelay: `${i * 0.15}s`,
+                  opacity: 0.3 + (i % 5) * 0.1,
                 }}
               />
             ))}
           </div>
-          <div className="container relative mx-auto px-4 text-center">
-            <div className="animate-fade-in">
-              <Badge className="mb-6 bg-magic-purple/20 text-magic-purple border-magic-purple/30 px-4 py-1.5 text-sm">
-                ✦ AI 新手友善學習平台
-              </Badge>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+
+          {/* 軌跡 SVG - 從左下到右上發光弧線 */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 1440 800"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="arcGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#4F7CFF" stopOpacity="0.15" />
+                <stop offset="40%" stopColor="#4F7CFF" stopOpacity="0.4" />
+                <stop offset="70%" stopColor="#4F7CFF" stopOpacity="0.7" />
+                <stop offset="100%" stopColor="#7C3AED" stopOpacity="0.9" />
+              </linearGradient>
+              <filter id="arcGlow">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            {/* 外發光軌跡 */}
+            <path
+              d="M 144 640 Q 540 480 720 360 Q 1000 220 1224 120"
+              fill="none"
+              stroke="url(#arcGradient)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              filter="url(#arcGlow)"
+              strokeDasharray="1000"
+              strokeDashoffset="1000"
+              className="animate-arc-draw"
+              style={{ animationDelay: "200ms" }}
+            />
+            {/* 內層較細發光線 */}
+            <path
+              d="M 144 640 Q 540 480 720 360 Q 1000 220 1224 120"
+              fill="none"
+              stroke="#4F7CFF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.6"
+              strokeDasharray="1000"
+              strokeDashoffset="1000"
+              className="animate-arc-draw"
+              style={{ animationDelay: "200ms" }}
+            />
+          </svg>
+
+          {/* 星星 - 軌跡終點 (右上) */}
+          <div
+            className="absolute top-[12%] right-[12%] opacity-0"
+            style={{ animation: "starReveal 0.4s ease-out 1s forwards" }}
+          >
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M24 4L27.5 16.5L40 20L27.5 23.5L24 36L20.5 23.5L8 20L20.5 16.5L24 4Z"
+                fill="#F4C542"
+                opacity="0.9"
+              />
+              <path
+                d="M24 12L25.7 18.3L32 20L25.7 21.7L24 28L22.3 21.7L16 20L22.3 18.3L24 12Z"
+                fill="#F4C542"
+                opacity="0.6"
+              />
+            </svg>
+          </div>
+
+          <div className="container relative mx-auto px-4 py-20 lg:py-32">
+            <div className="max-w-2xl">
+              {/* 標題 */}
+              <h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight opacity-0"
+                style={{ animation: "heroFadeIn 0.5s ease-out 0.6s forwards" }}
+              >
                 讓 AI 成為
-                <span className="bg-gradient-to-r from-magic-blue via-magic-purple to-magic-gold bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#4F7CFF] via-[#7C3AED] to-[#F4C542] bg-clip-text text-transparent">
                   {" "}
                   你的魔法棒
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+
+              {/* 副標題 */}
+              <p
+                className="text-lg text-[#A1A1B5] max-w-[480px] mb-10 leading-relaxed opacity-0"
+                style={{ animation: "heroFadeIn 0.4s ease-out 0.8s forwards" }}
+              >
                 專為熟齡族與 AI 新手設計的學習平台
                 <br />
                 從零開始，輕鬆掌握 AI 工具，開啟你的魔法之旅
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+              {/* 按鈕 */}
+              <div
+                className="flex flex-col sm:flex-row gap-4 opacity-0"
+                style={{ animation: "heroFadeIn 0.4s ease-out 1.2s forwards" }}
+              >
                 <Link
                   href="/courses"
-                  className="inline-flex items-center justify-center rounded-lg bg-magic-blue text-white hover:bg-magic-blue/90 text-base px-8 py-6 font-medium transition-colors gap-2"
+                  className="inline-flex items-center justify-center rounded-lg bg-[#4F7CFF] text-white hover:bg-[#3B6CFF] text-base h-12 px-6 font-medium transition-colors gap-2"
                 >
                   探索課程 <ArrowRight className="h-5 w-5" />
                 </Link>
                 <Link
                   href="/auth/register"
-                  className="inline-flex items-center justify-center rounded-lg border border-magic-gold text-magic-gold hover:bg-magic-gold/10 text-base px-8 py-6 font-medium transition-colors"
+                  className="inline-flex items-center justify-center rounded-lg border border-[#4F7CFF] text-[#4F7CFF] hover:bg-[#E8EEFF] text-base h-12 px-6 font-medium transition-colors"
                 >
                   免費註冊
                 </Link>
@@ -196,7 +282,8 @@ export default function HomePage() {
               {features.map((f, i) => (
                 <Card
                   key={i}
-                  className="glass border-0 text-center hover:shadow-lg transition-all hover:-translate-y-1"
+                  variant="glass"
+                  className="border-0 text-center hover:shadow-lg transition-all hover:-translate-y-1"
                 >
                   <CardContent className="p-6 md:p-8">
                     <div className="text-4xl mb-4">{f.icon}</div>
@@ -224,7 +311,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {featuredCourses.map((course, i) => (
                 <Link key={i} href={`/courses/${course.slug}`}>
-                  <Card className="glass border-0 overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 h-full">
+                  <Card variant="glass" className="border-0 overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 h-full">
                     <div className="aspect-video bg-gradient-to-br from-magic-blue/20 to-magic-purple/20 flex items-center justify-center">
                       <span className="text-4xl">🎯</span>
                     </div>
@@ -310,7 +397,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {latestPosts.map((post, i) => (
                 <Link key={i} href={`/blog/${post.slug}`}>
-                  <Card className="glass border-0 overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 h-full">
+                  <Card variant="glass" className="border-0 overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1 h-full">
                     <CardContent className="p-5">
                       <Badge className="mb-3 bg-magic-purple/10 text-magic-purple border-magic-purple/20">
                         {post.category}
@@ -345,7 +432,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {upcomingEvents.map((event, i) => (
                 <Link key={i} href={`/events/${event.slug}`}>
-                  <Card className="glass border-0 hover:shadow-lg transition-all hover:-translate-y-1">
+                  <Card variant="glass" className="border-0 hover:shadow-lg transition-all hover:-translate-y-1">
                     <CardContent className="p-6 flex gap-4 items-center">
                       <div className="text-center min-w-[60px]">
                         <div className="text-2xl font-bold text-magic-blue">
@@ -388,7 +475,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/auth/register"
-              className="inline-flex items-center justify-center rounded-lg bg-white text-magic-blue hover:bg-white/90 text-base px-8 py-6 font-medium transition-colors gap-2"
+              className="inline-flex items-center justify-center rounded-lg bg-white text-magic-blue hover:bg-white/90 text-base px-8 py-3 font-medium transition-colors gap-2"
             >
               免費註冊 <Sparkles className="h-5 w-5" />
             </Link>

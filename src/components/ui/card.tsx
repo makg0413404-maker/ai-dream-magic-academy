@@ -2,17 +2,30 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+type CardVariant = "elevated" | "flat" | "outline" | "glass" | "dark"
+
 function Card({
   className,
+  variant = "elevated",
   size = "default",
   ...props
-}: React.ComponentProps<"div"> & { size?: "default" | "sm" }) {
+}: React.ComponentProps<"div"> & { variant?: CardVariant; size?: "default" | "sm" }) {
   return (
     <div
       data-slot="card"
       data-size={size}
       className={cn(
-        "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-card py-(--card-spacing) text-sm text-card-foreground ring-1 ring-foreground/10 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+        "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl py-(--card-spacing) [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+        // Elevated - 標準卡片：白色背景、陰影、圓角 16px
+        variant === "elevated" && "bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]",
+        // Flat - 次要卡片
+        variant === "flat" && "bg-[#F8F9FC]",
+        // Outline - 邊框卡片
+        variant === "outline" && "bg-white border border-[#E4E4ED]",
+        // Glass - 毛玻璃卡片
+        variant === "glass" && "bg-[rgba(255,255,255,0.7)] backdrop-blur-[12px] border border-[rgba(79,124,255,0.15)]",
+        // Dark - 深色模式卡片
+        variant === "dark" && "bg-[#1A1A2E] border border-[#2D2D45] text-[#F1F1F6]",
         className
       )}
       {...props}
@@ -38,7 +51,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-title"
       className={cn(
-        "font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm",
+        "font-bold text-lg leading-snug group-data-[size=sm]/card:text-base",
         className
       )}
       {...props}

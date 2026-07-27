@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Users, ArrowLeft } from "lucide-react";
 import { EventRegistrationForm } from "./registration-form";
+import { getEventInfo } from "@/app/actions";
 
 const events = {
   "midjourney-intro": {
@@ -14,8 +14,6 @@ const events = {
     type: "線上",
     location: "Google Meet（連結將於報名後提供）",
     price: "免費",
-    slots: 50,
-    registered: 23,
     detail: `本次講座適合完全沒有經驗的 AI 新手。
 
 講座內容：
@@ -37,8 +35,6 @@ const events = {
     type: "實體",
     location: "台北市大安區（報名後通知詳細地址）",
     price: "免費",
-    slots: 30,
-    registered: 18,
     detail: `這是一場實體工作坊，限額 30 人。
 
 工作坊內容：
@@ -59,8 +55,6 @@ const events = {
     type: "線上",
     location: "Google Meet（連結將於報名後提供）",
     price: "免費",
-    slots: 100,
-    registered: 45,
     detail: `在這個 AI 快速發展的時代，掌握關鍵技能變得前所未有的重要。
 
 講座內容：
@@ -77,8 +71,6 @@ const events = {
     type: "實體",
     location: "台北市松山區（報名後通知詳細地址）",
     price: "免費",
-    slots: 40,
-    registered: 31,
     detail: `專為熟齡族設計的 AI 入門講座。
 
 講座內容：
@@ -132,6 +124,15 @@ export default async function EventDetailPage({
     );
   }
 
+  // Fetch live event info from Supabase
+  const eventInfo = await getEventInfo(slug);
+  const maxSlots = eventInfo?.max ?? 50;
+  const registeredCount = eventInfo?.registered ?? 0;
+  const remaining = eventInfo?.remaining ?? 0;
+  const isFull = remaining <= 0;
+  const deadline = eventInfo?.deadline;
+  const isPastDeadline = deadline ? new Date(deadline) < new Date() : false;
+
   return (
     <div className="py-16 md:py-24">
       <div className="container mx-auto px-4 max-w-3xl">
@@ -161,7 +162,18 @@ export default async function EventDetailPage({
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
-                <span>{event.registered}/{event.slots} 人已報名</span>
+                <span>
+                  {registeredCount}/{maxSlots} 人已報名
+                  {isFull ? (
+                    <Badge className="ml-2 bg-red-100 text-red-600 border-red-200 text-xs">
+                      額滿
+                    </Badge>
+                  ) : (
+                    <span className="ml-2 text-magic-blue font-medium">
+                      · 剩餘 {remaining} 名
+                    </span>
+                  )}
+                </span>
               </div>
             </div>
 
@@ -174,7 +186,12 @@ export default async function EventDetailPage({
 
           {/* Registration Form - Client Component */}
           <div className="md:col-span-2">
-            <EventRegistrationForm eventTitle={event.title} />
+            <EventRegistrationForm
+              eventSlug={slug}
+              eventTitle={event.title}
+              isFull={isFull || isPastDeadline}
+              remaining={remaining}
+            />
           </div>
         </div>
       </div>

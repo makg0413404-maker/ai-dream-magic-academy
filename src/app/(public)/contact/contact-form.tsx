@@ -6,11 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, MapPin, Phone, Send, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { submitContact } from "@/app/actions";
 
 export function ContactFormSection() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
 
   if (sent) {
     return (
@@ -29,35 +32,59 @@ export function ContactFormSection() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
       <Card className="glass border-0">
         <CardContent className="p-6">
+          {error && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600 flex items-start gap-2">
+              <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+              <span>{error}</span>
+            </div>
+          )}
+
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSent(true);
+              setError(null);
+              setPending(true);
+
+              const formData = new FormData(e.currentTarget);
+              const result = await submitContact(formData);
+
+              if (result.error) {
+                setError(result.error);
+                setPending(false);
+              } else {
+                setSent(true);
+                setPending(false);
+              }
             }}
             className="space-y-4"
           >
             <div>
               <Label htmlFor="name">姓名 *</Label>
-              <Input id="name" required placeholder="請輸入您的姓名" />
+              <Input id="name" name="name" required placeholder="請輸入您的姓名" />
             </div>
             <div>
               <Label htmlFor="email">Email *</Label>
-              <Input id="email" type="email" required placeholder="example@email.com" />
+              <Input id="email" name="email" type="email" required placeholder="example@email.com" />
             </div>
             <div>
               <Label htmlFor="phone">電話</Label>
-              <Input id="phone" type="tel" placeholder="0912-345-678" />
+              <Input id="phone" name="phone" type="tel" placeholder="0912-345-678" />
             </div>
             <div>
               <Label htmlFor="subject">主旨</Label>
-              <Input id="subject" placeholder="我想詢問..." />
+              <Input id="subject" name="subject" placeholder="我想詢問..." />
             </div>
             <div>
               <Label htmlFor="message">訊息 *</Label>
-              <Textarea id="message" required placeholder="請輸入您的訊息..." rows={5} />
+              <Textarea id="message" name="message" required placeholder="請輸入您的訊息..." rows={5} />
             </div>
-            <Button type="submit" className="w-full bg-magic-blue hover:bg-magic-blue/90">
-              <Send className="mr-2 h-4 w-4" /> 送出訊息
+            <Button
+              type="submit"
+              disabled={pending}
+              className="w-full bg-magic-blue hover:bg-magic-blue/90"
+            >
+              <Send className="mr-2 h-4 w-4" />
+              {pending ? "送出中..." : "送出訊息"}
             </Button>
           </form>
         </CardContent>
