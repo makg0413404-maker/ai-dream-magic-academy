@@ -5,23 +5,34 @@
 
 ---
 
-## [v1.3.0] — Sprint 3 Day 1 (進行中)
+## [v1.3.0] — Sprint 3 Day 1 ✅ 完成
 
 ### 新增功能
-- Supabase Auth 設定（Email/Password 登入啟用）
 - Auth Server Actions（signUp / signIn / signOut / getSession / getProfile / updateProfile / resetPassword）
-- Middleware 路由守衛（保護 /member/* 路由）
+- Middleware 路由守衛（保護 /member/* 路由，未登入自動跳轉）
 - 會員系統資料庫 Schema（profiles / user_roles / media_items）
+- 永久開發原則文件（docs/24-Dev-Principles.md）
 
 ### 資料庫變更
 - 新增 `profiles` 資料表（extends auth.users，含 Trigger 自動建立）
 - 新增 `user_roles` 資料表（RBAC 基礎）
-- 新增 `media_items` 資料表（統一圖片 + YouTube 媒體管理）
+- 新增 `media_items` 資料表（統一圖片 + YouTube，含 `sort_order` 欄位）
+- `membership_tier` 僅允許 `free` / `member`
 - 設定 RLS Policies（個人資料本人可讀寫、公開作品可瀏覽）
 
 ### 安全性更新
 - Middleware 攔截未登入對 /member/* 的存取
 - RLS 確保使用者只能操作自己的資料
+- `handle_new_user()` 設定 `SET search_path = ''` 防止權限提升
+
+### 驗證結果
+- Build: ✅ PASS
+- Lint: ✅ PASS
+- TypeScript: ✅ 編譯通過
+- E2E: ✅ 6 項測試全數 PASS
+
+### Git Commits
+- `Sprint 3 Day 1: Auth infra + Schema + Middleware`
 
 ---
 
