@@ -1,0 +1,41 @@
+{
+  "industry": "零售",
+  "name": "零售",
+  "keywords": ["服飾", "家居", "3C配件", "食品伴手禮", "生活用品", "電商", "實體店面"],
+  "audienceProfiles": [
+    {
+      "type": "一般消費者",
+      "painPoints": ["怕買到品質差", "選擇太多", "價格不透明"],
+      "triggers": ["質感保證", "真實評價", "限時優惠"]
+    },
+    {
+      "type": "送禮需求客群",
+      "painPoints": ["不知道送什麼", "怕禮物不夠體面"],
+      "triggers": ["精美包裝", "台灣製造", "送禮推薦"]
+    }
+  ],
+  "defaultStyle": "溫暖生活感",
+  "commonGoals": ["導購", "品牌曝光", "活動推廣", "新品上市"],
+  "contentTypes": ["img", "vid", "ad"],
+  "templateVariables": {
+    "img": {
+      "subject": "商品情境展示",
+      "setting": "生活場景或白底棚拍",
+      "style": "溫暖生活感",
+      "lighting": "窗邊自然光",
+      "composition": "45度俯拍或生活情境"
+    },
+    "vid": {
+      "scene": "商品功能展示或使用情境",
+      "narrator": "旁白描述",
+      "duration": "45秒",
+      "audio": "輕快現代"
+    },
+    "copy": {
+      "hook": "一眼就愛上的＿＿，現在入手正是時候。",
+      "cta": "立即訂購",
+      "tone": "溫暖推薦",
+      "length": "精簡30-50字"
+    }
+  }
+}

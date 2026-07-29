@@ -63,7 +63,7 @@ export default function RegisterForm() {
         }
         return;
       }
-      router.push("/member");
+      router.push("/courses");
       router.refresh();
     } catch {
       setError("系統目前忙碌，請稍後再試");

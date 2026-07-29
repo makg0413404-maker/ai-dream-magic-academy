@@ -1,0 +1,41 @@
+{
+  "industry": "個人品牌",
+  "name": "個人品牌",
+  "keywords": ["創業者", "講師", "顧問", "教練", "自媒體", "個人IP", "專業人士"],
+  "audienceProfiles": [
+    {
+      "type": "潛在客戶",
+      "painPoints": ["找不到值得信賴的專家", "資訊太多不知選誰"],
+      "triggers": ["專業形象", "真實故事", "具體成果"]
+    },
+    {
+      "type": "合作對象",
+      "painPoints": ["不確定對方專業度", "需要看到案例"],
+      "triggers": ["經歷亮點", "客戶見證", "產業知名度"]
+    }
+  ],
+  "defaultStyle": "專業知性",
+  "commonGoals": ["建立信賴", "吸引客戶", "提升知名度", "招募合作"],
+  "contentTypes": ["img", "vid", "copy"],
+  "templateVariables": {
+    "img": {
+      "subject": "個人專業形象照",
+      "setting": "簡約書櫃或工作場景",
+      "style": "專業知性",
+      "lighting": "窗邊自然光",
+      "wardrobe": "Smart Casual"
+    },
+    "vid": {
+      "scene": "個人品牌介紹影片",
+      "narrator": "本人親自入鏡",
+      "duration": "60秒",
+      "audio": "沉穩鋼琴"
+    },
+    "copy": {
+      "hook": "我曾經也和你一樣──直到我發現了這個方法。",
+      "cta": "私訊預約免費諮詢",
+      "tone": "溫暖真誠",
+      "length": "標準200-300字"
+    }
+  }
+}

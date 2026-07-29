@@ -1,0 +1,41 @@
+{
+  "industry": "餐飲探店",
+  "name": "餐飲探店",
+  "keywords": ["餐廳", "小吃", "咖啡廳", "烘焙", "美食推薦", "探店", "早午餐", "甜點"],
+  "audienceProfiles": [
+    {
+      "type": "美食愛好者",
+      "painPoints": ["不知道吃什麼", "踩雷經驗", "選擇困難"],
+      "triggers": ["食指大動", "真實評價", "獨特體驗"]
+    },
+    {
+      "type": "家庭聚餐客",
+      "painPoints": ["找適合全家的餐廳", "怕小孩沒東西吃", "怕太貴"],
+      "triggers": ["家庭友善", "價格實惠", "環境舒適"]
+    }
+  ],
+  "defaultStyle": "溫暖生活感",
+  "commonGoals": ["新客引流", "品牌曝光", "活動推廣", "外帶宣傳"],
+  "contentTypes": ["img", "vid", "copy"],
+  "templateVariables": {
+    "img": {
+      "subject": "招牌餐點或餐廳氛圍",
+      "setting": "餐廳內景或木桌擺盤",
+      "style": "溫暖生活感",
+      "lighting": "窗邊自然光",
+      "depthOfField": "淺景深"
+    },
+    "vid": {
+      "scene": "食物製作過程或用餐體驗",
+      "narrator": "無旁白僅字幕",
+      "duration": "60秒",
+      "audio": "輕快Jazz或治癒Lo-fi"
+    },
+    "copy": {
+      "hook": "這家藏在巷子裡的美味，你吃過了嗎？",
+      "cta": "私訊訂位享招待小菜",
+      "tone": "熱情分享",
+      "length": "標準200-300字"
+    }
+  }
+}

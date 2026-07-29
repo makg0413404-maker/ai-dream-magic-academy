@@ -1,8 +1,14 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
+import { getSession } from "@/app/actions/auth";
 import RegisterForm from "./register-form";
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
+  const session = await getSession();
+  if (session) {
+    redirect("/member");
+  }
   return (
     <Card variant="glass" className="border-0">
       <CardContent className="p-8">

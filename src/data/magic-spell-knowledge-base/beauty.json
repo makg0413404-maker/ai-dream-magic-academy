@@ -1,0 +1,41 @@
+{
+  "industry": "美容",
+  "name": "美容",
+  "keywords": ["美髮", "美甲", "護膚", "SPA", "美容院", "保養", "美容沙龍"],
+  "audienceProfiles": [
+    {
+      "type": "女性客戶",
+      "painPoints": ["皮膚困擾", "保養不知從何開始", "害怕被推銷"],
+      "triggers": ["變美", "自信", "放鬆", "寵愛自己"]
+    },
+    {
+      "type": "熟齡保養",
+      "painPoints": ["年紀增長", "皺紋細紋", "膚色不均"],
+      "triggers": ["優雅老化", "自然保養", "有感改善"]
+    }
+  ],
+  "defaultStyle": "溫暖專業",
+  "commonGoals": ["引流", "品牌曝光", "預約轉換", "新客體驗"],
+  "contentTypes": ["img", "vid", "copy"],
+  "templateVariables": {
+    "img": {
+      "subject": "護膚過程或美容服務",
+      "setting": "溫暖專業美容室",
+      "style": "溫暖自然",
+      "lighting": "柔和自然光",
+      "composition": "特寫產品或人物使用過程"
+    },
+    "vid": {
+      "scene": "顧客美容前後對比或服務過程",
+      "narrator": "美容師本人",
+      "duration": "60秒",
+      "audio": "輕柔鋼琴或療癒水聲"
+    },
+    "copy": {
+      "hook": "你多久沒有好好寵愛自己了？",
+      "cta": "私訊預約免費諮詢",
+      "tone": "溫暖療癒",
+      "length": "標準200-300字"
+    }
+  }
+}

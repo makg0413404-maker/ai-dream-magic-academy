@@ -46,7 +46,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-magic-blue transition-colors flex items-center gap-2">
+                <Link href="/prompt-tool" className="hover:text-magic-blue transition-colors flex items-center gap-2">
                   <Wand2 size={14} /> 提示詞工具
                 </Link>
               </li>

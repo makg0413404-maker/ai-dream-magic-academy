@@ -1,0 +1,51 @@
+{
+  "templateId": "copy-social",
+  "type": "copy",
+  "name": "文案咒語（社群貼文）",
+  "description": "社群媒體貼文文案模板，適用於 Facebook 與 Instagram",
+  "compatibleTools": ["ChatGPT", "Gemini"],
+  "sections": [
+    {
+      "name": "角色",
+      "content": "你是一位經驗豐富的{{行業}}行銷文案寫手，擅長打動{{目標客群描述}}。",
+      "order": 1
+    },
+    {
+      "name": "任務",
+      "content": "為{{行業類型}}撰寫一篇{{用途}}社群貼文文案，目標讀者是{{目標客群}}。",
+      "order": 2
+    },
+    {
+      "name": "文案結構",
+      "content": "標題（1行，<15字）：{{標題}}\n\n開場（1-2句）：{{開場}}\n\n主體（3-5句）：{{主體}}\n\n見證（1-2句，選擇性）：{{見證}}\n\nCTA（1句）：{{CTA}}",
+      "order": 3
+    },
+    {
+      "name": "語氣",
+      "content": "- 語氣：{{語氣}}\n- 長度：{{長度}}\n- 表情符號：{{表情}}",
+      "order": 4
+    },
+    {
+      "name": "品牌元素",
+      "content": "- 使用✦符號點綴重點\n- {{品牌關鍵字}}\n- Hashtags：{{Hashtags}}",
+      "order": 5
+    }
+  ],
+  "variables": {
+    "行業": "string",
+    "行業類型": "string",
+    "目標客群描述": "string",
+    "用途": "string",
+    "目標客群": "string",
+    "標題": "string",
+    "開場": "string",
+    "主體": "string",
+    "見證": "string",
+    "CTA": "string",
+    "語氣": "溫暖療癒 / 專業自信 / 親切日常 / 熱情分享",
+    "長度": "短版100-150字 / 標準200-300字 / 長版300-500字",
+    "表情": "適度使用 / 少量使用 / 不使用",
+    "品牌關鍵字": "string",
+    "Hashtags": "string"
+  }
+}
