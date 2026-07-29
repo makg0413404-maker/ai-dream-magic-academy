@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -9,10 +10,11 @@ import { signOut } from "@/app/actions/auth";
 
 const navLinks = [
   { href: "/", label: "首頁" },
-  { href: "/courses", label: "課程介紹" },
-  { href: "/events", label: "講座活動" },
-  { href: "/blog", label: "教學文章" },
-  { href: "/about", label: "關於我們" },
+  { href: "/courses", label: "課程" },
+  { href: "/prompt-tool", label: "提示詞工具" },
+  { href: "/gallery", label: "魔法廣場" },
+  { href: "/about", label: "關於" },
+  { href: "/member", label: "會員" },
 ];
 
 export default function NavbarClient({
@@ -34,15 +36,19 @@ export default function NavbarClient({
   return (
     <header className="sticky top-0 z-50 w-full border-b border-magic-blue/10 bg-white/80 backdrop-blur-lg">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl">✦</span>
-          <span className="text-xl font-bold bg-gradient-to-r from-magic-blue to-magic-purple bg-clip-text text-transparent">
-            AI 圓夢魔法學院
-          </span>
+        <Link href="/" className="flex items-center gap-2" aria-label="AI 圓夢魔法學院 首頁">
+          <Image
+            src="/images/brand-batch2/logo-portal-icon.png"
+            alt="AI 圓夢魔法學院"
+            width={40}
+            height={40}
+            className="h-10 w-10"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -52,8 +58,12 @@ export default function NavbarClient({
               {link.label}
             </Link>
           ))}
+        </nav>
+
+        {/* Desktop CTAs */}
+        <div className="hidden lg:flex items-center gap-3">
           {isLoggedIn ? (
-            <div className="flex items-center gap-3">
+            <>
               <Link
                 href="/member"
                 className="inline-flex items-center gap-1.5 rounded-lg bg-magic-blue text-white hover:bg-magic-blue/90 h-9 px-3 text-sm font-medium transition-colors"
@@ -68,20 +78,28 @@ export default function NavbarClient({
                 <LogOut size={16} />
                 登出
               </button>
-            </div>
+            </>
           ) : (
-            <Link
-              href="/auth/login"
-              className="inline-flex items-center justify-center rounded-lg bg-magic-blue text-white hover:bg-magic-blue/90 h-9 px-3 text-sm font-medium transition-colors"
-            >
-              登入 / 註冊
-            </Link>
+            <>
+              <Link
+                href="/auth/login"
+                className="inline-flex items-center justify-center rounded-lg border border-magic-blue text-magic-blue bg-transparent hover:bg-magic-blue-50 h-9 px-3 text-sm font-medium transition-colors"
+              >
+                登入
+              </Link>
+              <Link
+                href="/auth/register"
+                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-[#4F7CFF] to-[#7C3AED] text-white hover:opacity-90 h-9 px-4 text-sm font-semibold transition-all"
+              >
+                立即加入
+              </Link>
+            </>
           )}
-        </nav>
+        </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2"
+          className="lg:hidden p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="選單"
         >
@@ -92,8 +110,8 @@ export default function NavbarClient({
       {/* Mobile Navigation */}
       <div
         className={cn(
-          "md:hidden border-t border-magic-blue/10 bg-white overflow-hidden transition-all duration-300",
-          mobileOpen ? "max-h-96" : "max-h-0"
+          "lg:hidden border-t border-magic-blue/10 bg-white overflow-hidden transition-all duration-300",
+          mobileOpen ? "max-h-[32rem]" : "max-h-0"
         )}
       >
         <nav className="flex flex-col p-4 gap-3">
@@ -101,12 +119,13 @@ export default function NavbarClient({
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium py-2 px-3 rounded-lg hover:bg-magic-blue-50 transition-colors"
+              className="text-base font-medium py-2 px-3 rounded-lg hover:bg-magic-blue-50 transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
             </Link>
           ))}
+          <div className="h-px bg-magic-blue/10 my-1" />
           {isLoggedIn ? (
             <>
               <Link
@@ -129,13 +148,22 @@ export default function NavbarClient({
               </button>
             </>
           ) : (
-            <Link
-              href="/auth/login"
-              className="inline-flex items-center justify-center rounded-lg bg-magic-blue text-white hover:bg-magic-blue/90 h-11 px-3 text-base font-medium transition-colors w-full text-center"
-              onClick={() => setMobileOpen(false)}
-            >
-              登入 / 註冊
-            </Link>
+            <>
+              <Link
+                href="/auth/login"
+                className="inline-flex items-center justify-center rounded-lg border border-magic-blue text-magic-blue bg-transparent hover:bg-magic-blue-50 h-11 px-3 text-base font-medium transition-colors w-full text-center"
+                onClick={() => setMobileOpen(false)}
+              >
+                登入
+              </Link>
+              <Link
+                href="/auth/register"
+                className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-[#4F7CFF] to-[#7C3AED] text-white hover:opacity-90 h-11 px-3 text-base font-semibold transition-all w-full text-center"
+                onClick={() => setMobileOpen(false)}
+              >
+                立即加入
+              </Link>
+            </>
           )}
         </nav>
       </div>

@@ -3,155 +3,91 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Star, Users, Clock, ArrowLeft, BookOpen } from "lucide-react";
+import { Star, Users, Clock, ArrowLeft, BookOpen, Sparkles } from "lucide-react";
 
 const courses = {
-  "chatGPT-basics": {
-    title: "ChatGPT 從零開始",
-    desc: "4 堂課帶你從 AI 新手變成活用高手",
+  "ai-drawing-prompt": {
+    title: "AI 繪圖 × ChatGPT 提示詞",
+    desc: "從一句話開始，學會寫提示詞，生成高品質圖片。",
+    outcome: "學完做出：吸睛圖片與海報",
+    outcomeTags: ["ChatGPT 提示詞", "AI 圖片創作", "海報設計", "社群素材"],
     rating: 4.8,
     students: 128,
-    duration: "2 小時",
+    duration: "4 小時",
     lessons: 4,
-    category: "AI 入門",
+    category: "AI 繪圖",
     target: "完全初心者",
-    longDesc: `這門課專為完全沒有經驗的初學者設計。
+    longDesc: `這門課帶你從零開始，學會用 ChatGPT 寫提示詞，把腦中的想法變成高品質的 AI 圖片。
 
 你將學到：
-• AI 的基本概念與應用場景
-• ChatGPT 帳號註冊與基本操作
-• 實用提示詞技巧，讓 ChatGPT 聽懂你的需求
-• 日常生活中的 AI 應用實戰
+• 提示詞的基本概念與思考方式
+• 用 ChatGPT 撰寫清楚有效的提示詞
+• 控制風格與構圖，做出想要的畫面
+• 實作吸睛海報與社群素材
 
 課程特色：
-• 每一步都有圖文解說
+• 適合完全沒基礎的熟齡學員
 • 大字體、慢步調教學
-• 課後練習與解答`,
+• 每一步都有圖文解說與練習`,
     outline: [
-      "單元 1：什麼是 AI？— 認識人工智慧",
-      "單元 2：ChatGPT 註冊與基本操作",
-      "單元 3：10 個必學提示詞技巧",
-      "單元 4：日常應用場景實戰",
+      "單元 1：什麼是提示詞",
+      "單元 2：ChatGPT 寫提示詞基礎",
+      "單元 3：風格與構圖控制",
+      "單元 4：海報與社群素材實作",
     ],
   },
-  "midjourney-prompt": {
-    title: "Midjourney 魔法提示詞",
-    desc: "學會寫提示詞，讓 AI 幫你畫出夢想中的圖",
+  "ai-avatar-video": {
+    title: "AI 分身影片（即夢、豆包）",
+    desc: "不用拍攝、不會剪輯，也能製作自己的 AI 分身影片。",
+    outcome: "學完做出：自己的 AI 短影音",
+    outcomeTags: ["AI 分身", "短影音", "自我介紹影片", "行銷影片"],
     rating: 4.9,
     students: 96,
     duration: "3 小時",
-    lessons: 6,
-    category: "AI 繪圖",
+    lessons: 4,
+    category: "AI 影片",
     target: "有基礎者",
-    longDesc: `從 Midjourney 基本操作到進階提示詞技巧。
+    longDesc: `用即夢、豆包等 AI 工具，不用拍攝、不用剪輯，做出專屬於你的 AI 分身影片。
 
 你將學到：
-• Midjourney Discord 操作基礎
-• 提示詞的結構與撰寫技巧
-• 風格控制與參數調整
-• 商業應用實戰`,
+• 認識即夢、豆包等 AI 分身工具
+• 設計腳本與個人形象
+• 一鍵生成自己的分身影片
+• 自我介紹與行銷影片應用
+
+適合想做自我介紹、行銷宣傳的熟齡學員。`,
     outline: [
-      "單元 1：Midjourney 平台認識與設定",
-      "單元 2：提示詞基本結構",
-      "單元 3：風格控制與參數進階",
-      "單元 4：人物、場景、產品設計",
-      "單元 5：商業應用案例",
-      "單元 6：作品後製與優化",
+      "單元 1：認識 AI 分身工具",
+      "單元 2：腳本與形象設定",
+      "單元 3：生成分身影片",
+      "單元 4：自我介紹與行銷應用",
     ],
   },
-  "ai-video-basics": {
-    title: "AI 影片製作入門",
-    desc: "用 AI 工具快速製作高品質影片",
+  "ai-creative-ad": {
+    title: "AI 創意內容廣告片",
+    desc: "用 AI 快速完成廣告文案、圖片與影片，提升內容創作效率。",
+    outcome: "學完做出：能行銷品牌的內容",
+    outcomeTags: ["廣告影片", "社群貼文", "行銷素材", "品牌內容"],
     rating: 4.7,
     students: 64,
-    duration: "2.5 小時",
-    lessons: 5,
-    category: "AI 影片",
-    target: "初心者 ~ 中級",
-    longDesc: `學習使用 Runway、Pika 等 AI 影片工具。
-
-你將學到：
-• 文字生成影片技術
-• 圖片轉動態影片
-• AI 影片編輯與後製
-• 社群影片製作實戰`,
-    outline: [
-      "單元 1：AI 影片工具介紹",
-      "單元 2：文字生成影片",
-      "單元 3：圖片轉動態影片",
-      "單元 4：影片編輯與後製",
-      "單元 5：社群媒體影片實戰",
-    ],
-  },
-  "claude-workflow": {
-    title: "Claude AI 高效工作術",
-    desc: "用 Claude 提升工作效率的完整指南",
-    rating: 4.6,
-    students: 72,
-    duration: "2 小時",
-    lessons: 4,
-    category: "AI 工具",
-    target: "有基礎者",
-    longDesc: `學習如何用 Claude AI 提升工作效率。
-
-你將學到：
-• Claude 的核心功能介紹
-• 文件分析與摘要技巧
-• 數據整理與報告生成
-• 內容創作與編輯`,
-    outline: [
-      "單元 1：Claude AI 基本認識",
-      "單元 2：文件分析與摘要",
-      "單元 3：數據整理與報告",
-      "單元 4：內容創作實戰",
-    ],
-  },
-  "advanced-prompting": {
-    title: "AI 提示詞進階技巧",
-    desc: "從基礎到專業的提示詞工程全攻略",
-    rating: 4.8,
-    students: 85,
     duration: "4 小時",
-    lessons: 8,
-    category: "提示詞",
-    target: "中級",
-    longDesc: `深入學習提示詞工程的各種進階技巧。
+    lessons: 4,
+    category: "AI 內容",
+    target: "想經營品牌者",
+    longDesc: `整合多種 AI 工具，快速完成廣告文案、圖片與影片，大幅提升內容創作效率。
 
 你將學到：
-• 角色設定提示技巧
-• 思維鏈提示方法
-• 範例引導與 few-shot 技巧
-• 多步驟複雜任務拆解`,
-    outline: [
-      "單元 1：提示詞工程基礎回顧",
-      "單元 2：角色設定進階技巧",
-      "單元 3：思維鏈提示法",
-      "單元 4：Few-shot 與範例引導",
-      "單元 5：多步驟任務拆解",
-      "單元 6：條件控制與輸出格式",
-      "單元 7：常見問題與除錯",
-      "單元 8：綜合實戰專案",
-    ],
-  },
-  "canva-ai-design": {
-    title: "Canva AI 設計入門",
-    desc: "用 Canva AI 功能輕鬆做出專業設計",
-    rating: 4.5,
-    students: 53,
-    duration: "1.5 小時",
-    lessons: 3,
-    category: "AI 工具",
-    target: "完全初心者",
-    longDesc: `Canva 的 AI 功能讓設計變得前所未有的簡單。
+• 用 AI 寫出打動人的廣告文案
+• AI 圖片與版型設計
+• 廣告影片快速生成
+• 社群與行銷內容佈局
 
-你將學到：
-• Canva AI 功能總覽
-• AI 生成社群貼文設計
-• AI 輔助簡報製作`,
+適合想經營個人品牌、小生意的學員。`,
     outline: [
-      "單元 1：Canva AI 功能介紹",
-      "單元 2：社群貼文設計實戰",
-      "單元 3：簡報與海報製作",
+      "單元 1：廣告文案與品牌聲音",
+      "單元 2：AI 圖片與版型",
+      "單元 3：廣告影片生成",
+      "單元 4：社群與行銷佈局",
     ],
   },
 };
@@ -186,7 +122,7 @@ export default async function CourseDetailPage({
     return (
       <div className="py-24 text-center">
         <h1 className="text-2xl font-bold mb-4">課程未找到</h1>
-        <Link href="/courses" className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground hover:bg-primary/80 h-8 px-2.5 text-sm font-medium transition-colors">
+        <Link href="/courses" className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground hover:bg-primary/80 h-11 px-4 text-lg font-medium transition-colors">
           返回課程列表
         </Link>
       </div>
@@ -198,40 +134,60 @@ export default async function CourseDetailPage({
       <div className="container mx-auto px-4">
         <Link
           href="/courses"
-          className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-magic-blue mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-lg text-gray-500 hover:text-magic-purple mb-8 transition-colors"
         >
-          <ArrowLeft className="h-4 w-4" /> 返回課程列表
+          <ArrowLeft className="h-5 w-5" /> 返回課程列表
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            <Badge className="mb-4 bg-magic-blue/10 text-magic-blue border-magic-blue/20">
+            <Badge className="mb-4 bg-magic-purple/10 text-magic-purple border-magic-purple/20 text-base">
               {course.category}
             </Badge>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="text-magic-gold mr-2" aria-hidden="true">✦</span>
               {course.title}
             </h1>
-            <p className="text-lg text-gray-500 mb-6">{course.desc}</p>
-            <div className="flex items-center gap-4 text-sm text-gray-400 mb-8">
-              <span className="flex items-center gap-1">
-                <Star className="h-4 w-4 text-magic-gold fill-magic-gold" />{" "}
+            <p className="text-xl text-gray-600 mb-6 leading-relaxed">{course.desc}</p>
+            <p className="text-xl font-bold text-magic-purple mb-4">
+              <span className="text-magic-gold mr-2" aria-hidden="true">✦</span>
+              {course.outcome}
+            </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {course.outcomeTags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 rounded-full text-lg leading-relaxed bg-magic-purple/10 text-magic-purple border border-magic-gold/40"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-x-4 gap-y-3 text-lg text-gray-500 mb-8">
+              <span className="flex items-center gap-1 min-w-0">
+                <Star className="h-5 w-5 text-magic-gold fill-magic-gold" />{" "}
                 {course.rating}
               </span>
-              <span className="flex items-center gap-1">
-                <Users className="h-4 w-4" /> {course.students} 位學員
+              <span className="flex items-center gap-1 min-w-0">
+                <Users className="h-5 w-5 flex-shrink-0" /> {course.students} 位學員
               </span>
-              <span className="flex items-center gap-1">
-                <Clock className="h-4 w-4" /> {course.duration}
+              <span className="flex items-center gap-1 min-w-0">
+                <Clock className="h-5 w-5 flex-shrink-0" /> {course.duration}
+              </span>
+              <span className="flex items-center gap-1 min-w-0 col-span-2">
+                <BookOpen className="h-5 w-5 flex-shrink-0" /> 適合：{course.target}
               </span>
             </div>
 
             <Separator className="mb-8" />
 
             <div className="prose prose-gray max-w-none mb-10">
-              <h2 className="text-2xl font-bold mb-4">課程介紹</h2>
+              <h2 className="text-2xl font-bold mb-4">
+                <span className="text-magic-gold mr-2" aria-hidden="true">✦</span>課程介紹
+              </h2>
               {course.longDesc.split("\n").map((line, i) => (
-                <p key={i} className="text-gray-600 mb-2">
+                <p key={i} className="text-lg text-gray-600 mb-2 leading-relaxed">
                   {line}
                 </p>
               ))}
@@ -239,18 +195,20 @@ export default async function CourseDetailPage({
 
             <Separator className="mb-8" />
 
-            <h2 className="text-2xl font-bold mb-6">課程大綱</h2>
+            <h2 className="text-2xl font-bold mb-6">
+              <span className="text-magic-gold mr-2" aria-hidden="true">✦</span>課程大綱
+            </h2>
             <div className="space-y-3">
               {course.outline.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-3 p-4 rounded-lg bg-surface hover:bg-magic-blue-50/50 transition-colors"
+                  className="flex items-start gap-3 p-4 rounded-lg bg-surface hover:bg-magic-purple/5 transition-colors"
                 >
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-magic-blue text-white flex items-center justify-center text-sm font-bold">
+                  <span className="flex-shrink-0 w-9 h-9 rounded-full bg-gradient-to-br from-magic-purple to-magic-blue text-white flex items-center justify-center text-base font-bold">
                     {i + 1}
                   </span>
                   <div>
-                    <p className="font-medium">{item}</p>
+                    <p className="text-lg font-medium leading-relaxed">{item}</p>
                   </div>
                 </div>
               ))}
@@ -262,15 +220,13 @@ export default async function CourseDetailPage({
             <div className="glass rounded-xl p-6 sticky top-24">
               <div className="text-center mb-6">
                 <div className="text-6xl mb-4">
-                  {course.category === "AI 入門" ? "🚀" : 
-                   course.category === "AI 繪圖" ? "🎨" :
-                   course.category === "AI 影片" ? "🎬" :
-                   course.category === "提示詞" ? "✍️" : "🛠️"}
+                  {course.category === "AI 繪圖" ? "🎨" :
+                   course.category === "AI 影片" ? "🎬" : "✨"}
                 </div>
-                <h3 className="font-bold text-lg mb-2">{course.title}</h3>
+                <h3 className="font-bold text-xl mb-2">{course.title}</h3>
               </div>
 
-              <div className="space-y-3 mb-6 text-sm">
+              <div className="space-y-3 mb-6 text-lg">
                 <div className="flex justify-between">
                   <span className="text-gray-500">課程時長</span>
                   <span className="font-medium">{course.duration}</span>
@@ -285,20 +241,39 @@ export default async function CourseDetailPage({
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">課程費用</span>
-                  <span className="font-medium text-magic-blue">會員免費</span>
+                  <span className="font-medium text-magic-purple">會員免費</span>
                 </div>
               </div>
 
-              <Button className="w-full bg-magic-blue hover:bg-magic-blue/90 mb-3">
-                <BookOpen className="mr-2 h-4 w-4" /> 立即報名
-              </Button>
-              <Button variant="outline" className="w-full">
-                加入願望清單
-              </Button>
+              <Link href="/auth/register" className="block mb-3">
+                <Button className="w-full text-lg py-6 bg-gradient-to-r from-magic-purple to-magic-blue hover:opacity-90 text-white shadow-lg shadow-magic-purple/20">
+                  <Sparkles className="mr-2 h-5 w-5" /> 立即加入
+                </Button>
+              </Link>
+              <Link href="/courses" className="block">
+                <Button variant="outline" className="w-full text-lg py-6">
+                  返回課程列表
+                </Button>
+              </Link>
+              <p className="text-center text-lg text-gray-500 mt-4">
+                <span className="text-magic-gold" aria-hidden="true">✦</span>{" "}
+                免費註冊，馬上開始學習
+              </p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile sticky bottom CTA */}
+      <div className="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-t border-magic-purple/20 p-3">
+        <Link href="/auth/register" className="block">
+          <Button className="w-full text-lg py-6 bg-gradient-to-r from-magic-purple to-magic-blue hover:opacity-90 text-white shadow-lg shadow-magic-purple/20">
+            <Sparkles className="mr-2 h-5 w-5" /> 立即加入
+          </Button>
+        </Link>
+      </div>
+      {/* Spacer so sticky bar doesn't cover content on mobile */}
+      <div className="lg:hidden h-24" aria-hidden="true" />
     </div>
   );
 }
