@@ -525,48 +525,55 @@ export default function PromptToolPage() {
                     </div>
                   </fieldset>
 
-                  {/* 風格（選擇性） */}
-                  <fieldset>
-                    <legend className="mb-3 text-lg font-medium text-[#1E1E2E]">
-                      風格偏好{" "}
-                      <span className="text-base text-[#9CA3AF]">（選填）</span>
-                    </legend>
-                    <div
-                      role="radiogroup"
-                      aria-label="風格偏好"
-                      className="flex flex-wrap gap-2.5"
-                    >
-                      {[
-                        options.styleHint || "溫暖自然",
-                        "專業知性",
-                        "活潑親切",
-                        "高級質感",
-                      ].map((style) => {
-                        const selected = selectedStyle === style;
-                        return (
-                          <button
-                            key={style}
-                            type="button"
-                            role="radio"
-                            aria-checked={selected}
-                            onClick={() =>
-                              setSelectedStyle(
-                                selected ? "" : style
-                              )
-                            }
-                            className={[
-                              "rounded-xl border-2 px-5 py-3 text-lg font-medium transition-all",
-                              selected
-                                ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow"
-                                : "border-[#E4E4ED] bg-white text-[#1E1E2E] hover:border-[#4F7CFF]/50",
-                            ].join(" ")}
-                          >
-                            {style}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </fieldset>
+                  {/* 風格（進階選項 — 可折疊） */}
+                  <details className="group rounded-xl border border-[#E4E4ED] bg-white/50 p-4 transition-all">
+                    <summary className="flex cursor-pointer items-center justify-between text-base font-medium text-[#6B6B80] hover:text-[#4F7CFF]">
+                      <span>✦ 進階選項：風格偏好（選填）</span>
+                      <span className="text-sm text-[#9CA3AF] transition-transform group-open:rotate-180">
+                        ▼
+                      </span>
+                    </summary>
+                    <fieldset className="mt-4">
+                      <legend className="mb-3 text-lg font-medium text-[#1E1E2E] sr-only">
+                        風格偏好
+                      </legend>
+                      <div
+                        role="radiogroup"
+                        aria-label="風格偏好"
+                        className="flex flex-wrap gap-2.5"
+                      >
+                        {[
+                          options.styleHint || "溫暖自然",
+                          "專業知性",
+                          "活潑親切",
+                          "高級質感",
+                        ].map((style) => {
+                          const selected = selectedStyle === style;
+                          return (
+                            <button
+                              key={style}
+                              type="button"
+                              role="radio"
+                              aria-checked={selected}
+                              onClick={() =>
+                                setSelectedStyle(
+                                  selected ? "" : style
+                                )
+                              }
+                              className={[
+                                "rounded-xl border-2 px-5 py-3 text-lg font-medium transition-all",
+                                selected
+                                  ? "border-[#7C3AED] bg-[#7C3AED] text-white shadow"
+                                  : "border-[#E4E4ED] bg-white text-[#1E1E2E] hover:border-[#4F7CFF]/50",
+                              ].join(" ")}
+                            >
+                              {style}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </fieldset>
+                  </details>
 
                   {/* 生成按鈕 */}
                   <Button

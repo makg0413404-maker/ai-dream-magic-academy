@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { getSession } from "@/app/actions/auth";
 import RegisterForm from "./register-form";
+
+export const metadata: Metadata = {
+  title: "免費註冊",
+  description: "免費加入 AI 圓夢魔法學院，開始你的 AI 學習之旅。",
+};
 
 export default async function RegisterPage() {
   const session = await getSession();

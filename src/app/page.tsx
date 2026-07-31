@@ -24,7 +24,7 @@ const courses = [
     title: "AI 提示詞工具",
     desc: "不想學指令也沒關係，我們幫你準備好範本。",
     category: "提示詞工具",
-    slug: "#",
+    slug: "/prompt-tool",
   },
 ];
 
