@@ -44,14 +44,14 @@ export default function HomePage() {
             sizes="100vw"
             className="object-cover object-center -z-10"
           />
-          {/* 可讀性遮罩：左側加深，保留右側魔法之門與角色 */}
+          {/* 可讀性遮罩：減弱透明度，保留背景圖可見性 */}
           <div
             aria-hidden
-            className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1A2E]/85 via-[#1A1A2E]/55 to-transparent md:from-[#1A1A2E]/75 md:via-[#1A1A2E]/35"
+            className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1A2E]/60 via-[#1A1A2E]/30 to-transparent md:from-[#1A1A2E]/50 md:via-[#1A1A2E]/20"
           />
           <div
             aria-hidden
-            className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1A1A2E]/70 to-transparent"
+            className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1A1A2E]/50 to-transparent"
           />
 
           <div className="container mx-auto px-5 py-20 lg:py-28">
