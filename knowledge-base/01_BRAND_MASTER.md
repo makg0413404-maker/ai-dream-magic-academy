@@ -67,4 +67,28 @@
 - 首頁 94 分（凍結）、課程頁 96 分（凍結）——不因新靈感回改（Decision #001）
 - Brand Bible V1 已凍結，未經同意不得修改
 
+## 品牌素材保存制度（CEO 2026-07-31 指令）
+
+**所有品牌素材都必須保存原始檔（可編輯源檔），避免只剩合成圖而無法快速修改。**
+
+資料夾：專案根 `/Brand Assets/`
+```
+Brand Assets/
+├── Logo/          品牌 Logo 原始與成品
+├── Cover/         封面（cover_source.xxx 可編輯源檔 / cover_final.png 正式版 / cover_final_v2.png 修改版）
+├── Characters/    角色（小圓/小靈）
+├── Backgrounds/   背景（未加文字的原始背景）
+├── Canva/         如果使用 Canva，保留可編輯連結或匯出源
+├── PSD/           PSD 等圖層源檔
+└── Export/        最終匯出版
+```
+**命名規則**：
+- `cover_source.xxx`（可編輯原始檔，如 psd/fig/canva 連結）
+- `cover_final.png`（正式版）
+- `cover_final_v2.png`（修改版）
+- 以後修改只需編輯 source 檔再匯出，30 秒完成，不做修圖工程。
+
+**原則**：生圖/設計時，同時存放「可編輯原始檔」＋「正式匯出版」。
+
 <!-- 詳見 docs/36（定稿）與 docs/20（Bible） -->
+

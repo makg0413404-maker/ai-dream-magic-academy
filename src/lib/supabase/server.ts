@@ -13,9 +13,17 @@ export async function createServerSupabase() {
           return cookieStore.getAll();
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            cookieStore.set(name, value, options)
-          );
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            );
+          } catch {
+            // Server Component render context: Next.js forbids writing cookies
+            // outside a Server Action / Route Handler. This is expected and
+            // safe — session refresh/cookie writing is handled by middleware
+            // (src/middleware.ts) on the next request. Only reading is allowed
+            // here, and reading never throws, so we simply drop the write.
+          }
         },
       },
     }

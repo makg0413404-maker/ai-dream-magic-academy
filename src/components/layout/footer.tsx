@@ -46,6 +46,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/magic" className="hover:text-magic-blue transition-colors flex items-center gap-2">
+                  <Sparkles size={14} /> 魔法咒語庫
+                </Link>
+              </li>
+              <li>
                 <Link href="/prompt-tool" className="hover:text-magic-blue transition-colors flex items-center gap-2">
                   <Wand2 size={14} /> 提示詞工具
                 </Link>

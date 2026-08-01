@@ -9,6 +9,11 @@
 
 **8/3 講座交付**（Decision：8/3 講座交付模式，Sprint 2 暫不啟動，只驗收回報、修正、準備）。
 
+## 核心狀態（CEO 2026-07-31 最終決策）
+
+- 📗 **電子書 V2.1：Completed（Frozen）** — 已核准作為 8/3 講座版本，凍結不再修改（除非重大錯誤）。QR 暫不驗收，待官網上線後輸出 V2.2。
+- 🌐 **官網：Highest Priority** — 重心轉向官網首頁 Hero、AI 魔法咒語平台、官網正式部署、會員系統、QR Code 最終整合。
+
 ## 專案進度
 
 | Project | 完成率 | Priority | Deadline | Risk | 狀態 |

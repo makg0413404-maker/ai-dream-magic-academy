@@ -10,6 +10,7 @@ import { signOut } from "@/app/actions/auth";
 
 const navLinks = [
   { href: "/", label: "首頁" },
+  { href: "/magic", label: "魔法咒語庫" },
   { href: "/courses", label: "課程" },
   { href: "/prompt-tool", label: "提示詞工具" },
   { href: "/gallery", label: "魔法廣場" },

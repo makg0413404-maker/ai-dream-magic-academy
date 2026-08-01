@@ -33,65 +33,46 @@ export default function HomePage() {
     <div className="flex min-h-screen flex-col">
       <Navbar />
       <main className="flex-1">
-        {/* Hero V2 - 背景圖 + HTML 文案層 */}
-        <section className="relative isolate min-h-[92vh] flex items-center overflow-hidden">
-          {/* 背景圖（沉浸式，不浮貼 Logo） */}
+        {/* Hero V3 - 全屏大圖當頁首（圖是主角，文字極簡化、不遮圖） */}
+        <section className="relative isolate min-h-screen overflow-hidden">
+          {/* 全屏主視覺：fill + object-cover 填滿整個 Hero，無遮罩、不被覆蓋 */}
           <Image
-            src="/images/brand-batch2/hero-v2.png"
+            src="/images/hero_ceo_v1.jpg"
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center -z-10"
-          />
-          {/* 可讀性遮罩：減弱透明度，保留背景圖可見性 */}
-          <div
-            aria-hidden
-            className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1A1A2E]/60 via-[#1A1A2E]/30 to-transparent md:from-[#1A1A2E]/50 md:via-[#1A1A2E]/20"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1A1A2E]/50 to-transparent"
+            className="object-cover object-center"
           />
 
-          <div className="container mx-auto px-5 py-20 lg:py-28">
-            <div className="max-w-2xl">
-              {/* 我是誰 */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow">
-                AI 圓夢魔法學院
-              </h1>
-
-              {/* 主 Slogan */}
-              <p className="mt-4 text-xl sm:text-2xl lg:text-3xl font-bold text-magic-gold drop-shadow">
-                讓 AI 成為你的魔法棒。
-              </p>
-
-              {/* 輔 + 幫誰 */}
-              <p className="mt-3 text-lg sm:text-xl text-white/90 leading-relaxed">
-                陪你踏出 AI 的第一步。
-                <br />
-                專為 AI 新手、熟齡族設計，不用程式碼，聽得懂、學得會。
-              </p>
-
-              {/* 得到什麼 */}
-              <p className="mt-4 text-lg text-white/80 leading-relaxed">
-                學會 AI、完成作品、創造你的第二人生。
-              </p>
-
-              {/* CTA */}
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/auth/register"
-                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#4F7CFF] to-[#7C3AED] text-white text-xl font-bold h-16 px-10 shadow-[0_8px_30px_rgba(124,58,237,0.55)] transition-all hover:shadow-[0_12px_40px_rgba(124,58,237,0.7)] hover:opacity-90"
-                >
-                  立即加入
-                </Link>
-                <Link
-                  href="/courses"
-                  className="inline-flex items-center justify-center rounded-full border-2 border-[#F4C542] text-[#F4C542] bg-white/5 text-lg font-semibold h-14 px-8 transition-all hover:bg-[#F4C542] hover:text-[#1A1A2E]"
-                >
-                  看看課程 <ArrowRight className="h-5 w-5" />
-                </Link>
+          {/* 極簡文字：僅品牌識別 + 單一 CTA，置於全屏圖的底部。
+              文字自帶極淡玻璃底，圖面背景仍清晰可見，圖為頁首主角。 */}
+          <div className="absolute inset-x-0 bottom-0">
+            <div className="container mx-auto px-5 pb-8 sm:pb-10">
+              <div className="inline-flex flex-col gap-3 sm:gap-4 rounded-2xl bg-[#1A1A2E]/25 px-5 py-4 sm:px-7 sm:py-5 backdrop-blur-sm">
+                {/* 品牌識別 */}
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight drop-shadow">
+                  AI 圓夢魔法學院
+                </h1>
+                {/* 主 Slogan */}
+                <p className="text-base sm:text-lg font-semibold text-magic-gold drop-shadow">
+                  讓 AI 成為你的魔法棒。
+                </p>
+                {/* CTA */}
+                <div className="mt-1 flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/auth/register"
+                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#4F7CFF] to-[#7C3AED] text-white text-base font-bold h-12 px-7 shadow-[0_8px_30px_rgba(124,58,237,0.45)] transition-all hover:opacity-90"
+                  >
+                    立即加入
+                  </Link>
+                  <Link
+                    href="/courses"
+                    className="inline-flex items-center justify-center rounded-full border-2 border-[#F4C542] text-[#F4C542] bg-white/5 text-sm font-semibold h-11 px-6 transition-all hover:bg-[#F4C542] hover:text-[#1A1A2E]"
+                  >
+                    看看課程 <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
